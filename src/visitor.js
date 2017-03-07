@@ -1,6 +1,6 @@
 /*!
  * Copyright (C) 2017 Glayzzle (BSD3 License)
- * @authors https://github.com/glayzzle/code-snipper/graphs/contributors
+ * @authors https://github.com/glayzzle/code-sniper/graphs/contributors
  * @url http://glayzzle.com
  */
 
@@ -8,8 +8,8 @@ var defaultRules = [
   
 ];
 
-var Visitor = function(snipper) {
-  this.snipper = snipper;
+var Visitor = function(sniper) {
+  this.sniper = sniper;
   this.rules = [];
 };
 
@@ -18,15 +18,15 @@ Visitor.prototype.addRule = function() {
 };
 
 Visitor.prototype.getSession = function() {
-  return this.snipper.session;
+  return this.sniper.session;
 };
 
 Visitor.prototype.getReport = function() {
-  return this.snipper.report;
+  return this.sniper.report;
 };
 
 Visitor.prototype.getParser = function() {
-  return this.snipper.parser;
+  return this.sniper.parser;
 };
 
 

@@ -1,5 +1,5 @@
 {
-  "name": "code-snipper",
+  "name": "code-sniper",
   "version": "1.0.0",
   "description": "A clone of code sniffer (PHPCS) for javascript",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/glayzzle/code-snipper.git"
+    "url": "git+https://github.com/glayzzle/code-sniper.git"
   },
   "keywords": [
     "static-analysis",
@@ -17,10 +17,10 @@
   "author": "Ioan CHIRIAC",
   "license": "BSD-3-Clause",
   "bugs": {
-    "url": "https://github.com/glayzzle/code-snipper/issues"
+    "url": "https://github.com/glayzzle/code-sniper/issues"
   },
-  "homepage": "https://github.com/glayzzle/code-snipper#readme",
+  "homepage": "https://github.com/glayzzle/code-sniper#readme",
   "dependencies": {
-    "php-parser": "^2.0.1"
+    "php-parser": "~2"
   }
 }

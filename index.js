@@ -1,6 +1,6 @@
 /*!
  * Copyright (C) 2017 Glayzzle (BSD3 License)
- * @authors https://github.com/glayzzle/code-snipper/graphs/contributors
+ * @authors https://github.com/glayzzle/code-sniper/graphs/contributors
  * @url http://glayzzle.com
  */
 
@@ -12,14 +12,14 @@ var phpParser = require('php-parser');
 /**
  * Main class for handling parsing
  */
-var Snipper = function(options) {
+var Sniper = function(options) {
   this.setOptions(options);
 };
 
 /**
  *
  */
-Snipper.prototype.setOptions = function(options) {
+Sniper.prototype.setOptions = function(options) {
   this.options = options;
   this.clear();
   return this;
@@ -28,7 +28,7 @@ Snipper.prototype.setOptions = function(options) {
 /**
  * Clean up current report informations
  */
-Snipper.prototype.clear = function() {
+Sniper.prototype.clear = function() {
   this.parser = new phpParser(
     'parser' in this.options ? this.options.parser : null
   );
@@ -42,16 +42,16 @@ Snipper.prototype.clear = function() {
 /**
  * Gets the php-parser instance in order to manually parse things
  */
-Snipper.prototype.getParser = function() {
+Sniper.prototype.getParser = function() {
   return this.parser;
 };
 
 /**
  * Parses the current file and returns its AST
  */
-Snipper.prototype.parseFile = function(filename, buffer) {
+Sniper.prototype.parseFile = function(filename, buffer) {
   return this.parser.parseCode(buffer, filename);
 };
 
 
-module.exports = Snipper;
+module.exports = Sniper;

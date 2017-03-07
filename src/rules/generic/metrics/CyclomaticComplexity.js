@@ -1,6 +1,6 @@
 /*!
  * Copyright (C) 2017 Glayzzle (BSD3 License)
- * @authors https://github.com/glayzzle/code-snipper/graphs/contributors
+ * @authors https://github.com/glayzzle/code-sniper/graphs/contributors
  * @url http://glayzzle.com
  */
 var Rule = require('../../../rule');
