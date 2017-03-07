@@ -1,0 +1,58 @@
+{
+  "description": "The coding standard for PHP_CodeSniffer itself.",
+  "pattern": {
+    "excludes": [
+      "**/Tests/**"
+    ]
+  },
+  "includes": ["pear"],
+  "rules": {
+    "generic": {
+      "commenting": {
+        "Todo": true
+      },
+      "controlstructures": {
+        "InlineControlStructure": true
+      },
+      "formatting": {
+        "DisallowMultipleStatements": true,
+        "SpaceAfterCast": true,
+        "MultipleStatementAlignment": {
+          "error": true,
+          "maxPadding": 12
+        }
+      },
+      "namingconventions": {
+        "ConstructorName": true
+      },
+      "php": {
+        "DeprecatedFunctions": true,
+        "LowerCaseKeyword": true
+      },
+      "strings": {
+        "UnnecessaryStringConcat": true
+      }
+    },
+    "pear": {
+      "functions": {
+        "FunctionCallSignature": true
+      }
+    },
+    "zend": {
+      "files": {
+        "ClosingTag": true
+      }
+    },
+    "psr2": {
+      "files": {
+        "EndFileNewline": true
+      }
+    },
+    "squiz": {
+      "arrays": {
+        "ArrayBracketSpacing": true,
+        "ArrayDeclaration": true
+      }
+    }
+  }
+}

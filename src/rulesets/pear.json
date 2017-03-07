@@ -1,0 +1,37 @@
+{
+  "description": "The PEAR coding standard.",
+  "rules": {
+    "generic": {
+      "functions": {
+        "FunctionCallArgumentSpacing": true
+      },
+      "naming": {
+        "UpperCaseConstantName": true
+      },
+      "php": {
+        "LowerCaseConstant": true,
+        "DisallowShortOpenTag": true
+      },
+      "whitespace": {
+        "DisallowTabIndent": true
+      },
+      "commenting": {
+        "DocComment": true
+      },
+      "controlstructures": {
+        "InlineControlStructure": {
+          "error": false
+        }
+      },
+      "files": {
+        "LineLength": {
+          "lineLimit": 85,
+          "absoluteLineLimit": 0
+        },
+        "LineEndings": {
+          "LineEndings": "\n"
+        }
+      }
+    }
+  }
+}
