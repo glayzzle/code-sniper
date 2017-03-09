@@ -53,5 +53,4 @@ Sniper.prototype.parseFile = function(filename, buffer) {
   return this.parser.parseCode(buffer, filename);
 };
 
-
 module.exports = Sniper;

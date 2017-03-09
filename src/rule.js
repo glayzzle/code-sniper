@@ -4,42 +4,96 @@
  * @url http://glayzzle.com
  */
 
+/**
+ * The message class
+ */
 var Message = require('./message');
+
+/**
+ * List of all registered rules
+ */
+var rules = {};
+
 
 /**
  * Creates a new rule instance
  */
-var Rule = function(visitor, type) {
-  this.visitor = visitor;
+var Rule = function() {
+  this.visitor = null;
+  this.namespace = null;
 };
 
+/**
+ * Declares a new rule
+ */
 Rule.extends = function(namespace, ctor) {
-
+  if (typeof ctor !== 'function') {
+    ctor = function() {};
+  }
+  ctor.prototype = Object.create(this.prototype);
+  ctor.extends = this.extends.bind(ctor);
+  ctor.prototype.constructor = ctor;
+  rules[namespace] = ctor;
+  return ctor;
 };
 
+/**
+ * Retrieves a rule
+ */
+Rule.create = function(visitor, namespace) {
+  if (namespace in rules) {
+    var rule = new rules[namespace]();
+    rule.visitor = visitor;
+    rule.namespace = namespace;
+  }
+  return null;
+};
+
+/**
+ * Helper in order to iterate over each child
+ */
 Rule.prototype.scanChilds = function(ast, cb) {
-
+  if (Array.isArray(ast)) {
+    for(var i = 0; i < ast.length; i++) {
+      this.scanChilds(ast[i], cb);
+    }
+  } else {
+    if (ast && ast.kind) {
+      cb.apply(this, [ast]);
+    }
+    if (typeof ast === 'object') {
+      for(var k in ast) {
+        var obj = ast[k];
+        if (Array.isArray(obj)) {
+          this.scanChilds(obj, cb);
+        } else if (obj && obj.kind) {
+          this.scanChilds(obj, cb);
+        }
+      }
+    }
+  }
+  return this;
 };
 
+/**
+ * Scans the next token
+ */
 Rule.prototype.nextToken = function() {
-
+  // TODO
 }:
 
 
-Rule.prototype.onToken = function(selector, cb) {
-
-};
-
-Rule.prototype.onNode = function(selector, cb) {
-
+Rule.prototype.on = function(selector) {
+  return this;
 };
 
 Rule.prototype.onFileReady = function(cb) {
-
+  return this;
 };
 
 Rule.prototype.onScanReady = function(cb) {
 
+  return this;
 };
 
 Rule.prototype.addFix = function() {
