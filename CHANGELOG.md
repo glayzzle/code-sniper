@@ -1,3 +1,11 @@
+## [Version 0.1.2](https://github.com/glayzzle/code-snipper/releases/tag/v0.1.2) (2017-3-18)
+
+### Bug fixes
+
+- fix syntax error: [`6a21194`](https://github.com/glayzzle/code-snipper/commit/6a21194)
+
+[...full changes](https://github.com/glayzzle/code-snipper/compare/v0.1.1...v0.1.2)
+
 ## [Version 0.1.1](https://github.com/glayzzle/code-snipper/releases/tag/v0.1.1) (2017-3-18)
 
 ### Breaking changes
