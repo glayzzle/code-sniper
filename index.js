@@ -58,4 +58,11 @@ Sniper.prototype.parseFile = function(filename, buffer) {
   return this.parser.parseCode(buffer, filename);
 };
 
+/** Export classes **/
+Sniper.Message = require('./src/message');
+Sniper.Rule = require('./src/rule');
+Sniper.Report = Report;
+Sniper.Session = Session;
+Sniper.Visitor = Visitor;
+
 module.exports = Sniper;
