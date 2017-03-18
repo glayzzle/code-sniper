@@ -1,5 +1,10 @@
 # code-sniper
 
+[![npm version](https://badge.fury.io/js/code-sniper.svg)](https://www.npmjs.com/package/code-sniper)
+[![Build Status](https://travis-ci.org/glayzzle/code-sniper.svg?branch=master)](https://travis-ci.org/glayzzle/code-sniper)
+[![Coverage Status](https://coveralls.io/repos/github/glayzzle/code-sniper/badge.svg?branch=master)](https://coveralls.io/github/glayzzle/code-sniper?branch=master)
+[![Gitter](https://img.shields.io/badge/GITTER-join%20chat-green.svg)](https://gitter.im/glayzzle/Lobby)
+
 A clone of code sniffer (PHPCS) written in nodejs.
 
 ## CLI Usage
