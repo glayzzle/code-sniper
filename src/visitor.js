@@ -52,8 +52,8 @@ var Visitor = function(sniper) {
         new Message(
           parseErrorRule,
           Message.LEVEL_CRITICAL,
-          err.message,
-          self.getPosition()
+          self.getPosition(),
+          err.message
         )
       );
     }
