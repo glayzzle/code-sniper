@@ -13,7 +13,12 @@ var phpParser = require('php-parser');
  * Main class for handling parsing
  */
 var Sniper = function(options) {
-  this.setOptions(options);
+  if (options) {
+    this.setOptions(options);
+  } else {
+    this.options = {};
+    this.clear();
+  }
 };
 
 /**

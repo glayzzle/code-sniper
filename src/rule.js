@@ -79,7 +79,7 @@ Rule.prototype.scanChilds = function(ast, cb) {
  * Scans the next token
  */
 Rule.prototype.nextToken = function() {
-  // TODO
+  return this.visitor.scanNextToken();
 }:
 
 
@@ -92,7 +92,6 @@ Rule.prototype.onFileReady = function(cb) {
 };
 
 Rule.prototype.onScanReady = function(cb) {
-
   return this;
 };
 
@@ -103,7 +102,7 @@ Rule.prototype.addFix = function() {
 
 Rule.prototype.addMessage = function(level, key, message, position) {
   if (!position) {
-    // TODO retrieve the position of current node / token from the parser
+    position = this.visitor.getPosition();
   }
   var message = new Message(this, level, key, message, position);
   this.visitor.getReport().addMessage(

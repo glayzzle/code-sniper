@@ -18,4 +18,21 @@ var Location = function(filename, lineStart, colStart, offsetStart, lineEnd, col
   };
 };
 
+Location.prototype.fromNode = function() {
+
+};
+
+Location.prototype.includeNode = function() {
+
+};
+
+Location.prototype.fromToken = function() {
+
+};
+
+Location.prototype.includeToken = function() {
+  
+};
+
+
 module.exports = Location;

@@ -9,7 +9,7 @@ var Report = function() {
   this.fixes = {};
   this.stats = {
     messages: {
-      severe: 0,
+      critical: 0,
       warning: 0,
       important: 0,
       notice: 0

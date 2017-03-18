@@ -8,7 +8,7 @@ var Message = function(rule, level, location, text) {
   this.rule = rule;
   this.level = level;
   this.location = location;
-  this.text = message;
+  this.text = text;
 };
 
 Message.LEVEL_CRITICAL    = 'critical';
