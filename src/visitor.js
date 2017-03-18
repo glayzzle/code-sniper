@@ -6,6 +6,7 @@
 
 var Location = require('./location');
 var Message = require('./message');
+var Rule = require('./rule');
 
 var defaultRules = [
 
@@ -38,6 +39,9 @@ var Visitor = function(sniper) {
   this.protoParserError = sniper.parser.parser.raiseError.bind(
     sniper.parser.parser
   );
+  var parseErrorRule = new Rule();
+  parseErrorRule.namespace = 'parser';
+  parseErrorRule.visitor = this;
   sniper.parser.parser.raiseError = function(message, msgExpect, expect, token) {
     var err = self.protoParserError(message, msgExpect, expect, token);
     if (!self.hasError) {
@@ -46,9 +50,8 @@ var Visitor = function(sniper) {
       self.getReport().addMessage(
         self.filename,
         new Message(
-          null,
+          parseErrorRule,
           Message.LEVEL_CRITICAL,
-          'parser',
           err.message,
           self.getPosition()
         )
