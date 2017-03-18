@@ -1,3 +1,12 @@
+## [Version 0.1.3](https://github.com/glayzzle/code-snipper/releases/tag/v0.1.3) (2017-3-18)
+
+### Bug fixes
+
+- fix rule signature on constructor: [`58c28ca`](https://github.com/glayzzle/code-snipper/commit/58c28ca)
+- improve test on parsing errors: [`ccfa864`](https://github.com/glayzzle/code-snipper/commit/ccfa864)
+
+[...full changes](https://github.com/glayzzle/code-snipper/compare/v0.1.2...v0.1.3)
+
 ## [Version 0.1.2](https://github.com/glayzzle/code-snipper/releases/tag/v0.1.2) (2017-3-18)
 
 ### Bug fixes
