@@ -1,0 +1,6 @@
+/docs/
+/test/
+/coverage/
+/gruntfile.js
+/.coveralls.yml
+/.travis.yml
