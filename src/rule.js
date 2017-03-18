@@ -80,7 +80,7 @@ Rule.prototype.scanChilds = function(ast, cb) {
  */
 Rule.prototype.nextToken = function() {
   return this.visitor.scanNextToken();
-}:
+};
 
 
 Rule.prototype.on = function(selector) {
