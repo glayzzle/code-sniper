@@ -4,65 +4,56 @@
  * @url http://glayzzle.com
  */
 
-var Report = require('./src/report');
-var Session = require('./src/session');
-var Visitor = require('./src/visitor');
-var phpParser = require('php-parser');
+import Report from './src/report';
+import Session from './src/session';
+import Visitor from './src/visitor';
+import phpParser from 'php-parser';
 
 /**
  * Main class for handling parsing
  */
-var Sniper = function(options) {
-  if (options) {
-    this.setOptions(options);
-  } else {
-    this.options = {};
-    this.clear();
+
+export default class Sniper {
+
+  constructor(options) {
+    this.setOptions(options ? options : {});
   }
-};
 
-/**
- *
- */
-Sniper.prototype.setOptions = function(options) {
-  this.options = options;
-  this.clear();
-  return this;
-};
+  /**
+   *
+   */
+  setOptions(options) {
+    this.options = options;
+    this.clear();
+    return this;
+  }
 
-/**
- * Clean up current report informations
- */
-Sniper.prototype.clear = function() {
-  this.parser = new phpParser(
-    'parser' in this.options ? this.options.parser : null
-  );
-  this.report = new Report();
-  this.session = new Session();
-  this.visitor = new Visitor(this);
-  return this;
-};
+  /**
+   * Clean up current report informations
+   */
+  clear() {
+    this.parser = new phpParser(
+      'parser' in this.options ? this.options.parser : null
+    );
+    this.report = new Report();
+    this.session = new Session();
+    this.visitor = new Visitor(this);
+    return this;
+  }
 
 
-/**
- * Gets the php-parser instance in order to manually parse things
- */
-Sniper.prototype.getParser = function() {
-  return this.parser;
-};
+  /**
+   * Gets the php-parser instance in order to manually parse things
+   */
+  getParser() {
+    return this.parser;
+  }
 
-/**
- * Parses the current file and returns its AST
- */
-Sniper.prototype.parseFile = function(filename, buffer) {
-  return this.parser.parseCode(buffer, filename);
-};
+  /**
+   * Parses the current file and returns its AST
+   */
+  parseFile(filename, buffer) {
+    return this.parser.parseCode(buffer, filename);
+  }
+}
 
-/** Export classes **/
-Sniper.Message = require('./src/message');
-Sniper.Rule = require('./src/rule');
-Sniper.Report = Report;
-Sniper.Session = Session;
-Sniper.Visitor = Visitor;
-
-module.exports = Sniper;

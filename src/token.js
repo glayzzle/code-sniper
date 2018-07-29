@@ -4,20 +4,21 @@
  * @url http://glayzzle.com
  */
 
-var Token = function(lex) {
-  // TODO
-};
+export default class Token {
+  constructor(lex) {
+    // TODO
+  }
 
-Token.prototype.isEOF = function() {
-  // TODO
-};
+  isEOF() {
+    // TODO
+  };
 
-Token.prototype.is = function(type) {
-  // TODO
-};
+  is(type) {
+    // TODO
+  };
 
-Token.prototype.location = function(type) {
-  // TODO
-};
+  location(type) {
+    // TODO
+  };
 
-module.exports = Token;
+}

@@ -38,15 +38,28 @@ Rule.extends = function(namespace, ctor) {
 };
 
 /**
+ * Retrieves a Rule from the specified namespace
+ */
+Rule.get = function(namespace) {
+  // Loads the specified rule
+  if (!(namespace in rules)) {
+    require('./rules/' + namespace.replace(/\./g, '/'));
+    if (!(namespace in rules)) {
+      throw new Error('Undefined rule "' + namespace + '"');
+    }
+  }
+  return rules[namespace];
+}
+
+/**
  * Retrieves a rule
  */
 Rule.create = function(visitor, namespace) {
-  if (namespace in rules) {
-    var rule = new rules[namespace]();
-    rule.visitor = visitor;
-    rule.namespace = namespace;
-  }
-  return null;
+  var ctor = Rule.get(namespace);
+  var rule = new ctor();
+  rule.visitor = visitor;
+  rule.namespace = namespace;
+  return rule;
 };
 
 /**
@@ -99,12 +112,33 @@ Rule.prototype.addFix = function() {
   // TODO
 };
 
+/**
+ * Stores a value into the session
+ */
+Rule.prototype.setSession = function(key, value) {
+  return this.visitor.getSession().setValue(
+    this.visitor.filename, key, value
+  );
+  return this;
+};
 
-Rule.prototype.addMessage = function(level, key, message, position) {
+/**
+ * Gets a value from the session
+ */
+Rule.prototype.getSession = function(key) {
+  return this.visitor.getSession().getValue(
+    this.visitor.filename, key
+  );
+};
+
+/**
+ * Creates a new message
+ */
+Rule.prototype.addMessage = function(level, message, position) {
   if (!position) {
     position = this.visitor.getPosition();
   }
-  var message = new Message(this, level, key, message, position);
+  var message = new Message(this, level, position, message);
   this.visitor.getReport().addMessage(
     this.visitor.filename,
     message
@@ -115,29 +149,29 @@ Rule.prototype.addMessage = function(level, key, message, position) {
 /**
  * Sends a critical message
  */
-Rule.prototype.criticalMessage = function(key, message, position) {
-  return this.addMessage(Message.LEVEL_CRITICAL, key, message, position);
+Rule.prototype.criticalMessage = function(message, position) {
+  return this.addMessage(Message.LEVEL_CRITICAL, message, position);
 };
 
 /**
  * Sends an important message
  */
-Rule.prototype.importantMessage = function(key, message, position) {
-  return this.addMessage(Message.LEVEL_IMPORTANT, key, message, position);
+Rule.prototype.importantMessage = function(message, position) {
+  return this.addMessage(Message.LEVEL_IMPORTANT, message, position);
 };
 
 /**
  * Sends a warning
  */
-Rule.prototype.warningMessage = function(key, message, position) {
-  return this.addMessage(Message.LEVEL_WARNING, key, message, position);
+Rule.prototype.warningMessage = function(message, position) {
+  return this.addMessage(Message.LEVEL_WARNING, message, position);
 };
 
 /**
  * Appends a notice message
  */
-Rule.prototype.noticeMessage = function(key, message, position) {
-  return this.addMessage(Message.LEVEL_NOTICE, key, message, position);
+Rule.prototype.noticeMessage = function(message, position) {
+  return this.addMessage(Message.LEVEL_NOTICE, message, position);
 };
 
 // Exports the rule

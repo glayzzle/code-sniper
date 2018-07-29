@@ -6,7 +6,7 @@
 var Rule = require('../../../rule');
 
 var ClosingTag = Rule.extends(
-  'zend.file.ClosingTag', function() {
+  'zend.files.ClosingTag', function() {
   this.onToken('T_CLOSE_TAG', this.onCloseTag);
 });
 
